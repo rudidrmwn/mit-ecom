@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\StoreController;
+use App\Http\Controllers\API\CartController;
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
@@ -15,6 +16,10 @@ Route::middleware('auth:api')->group(function(){
     Route::resource('products', ProductController::class);
     Route::resource('store', StoreController::class);
     Route::post('store/{id_seller}', [StoreController::class, 'updateStoreBySeller']);
+    Route::post('cart',[CartController::class,'createOrUpdateCart']);
+    Route::get('carts/{buyer}',[CartController::class,'getUserCart']);
+    Route::delete('item-cart/{cartId}/{ItemId}', [CartController::class, 'clearItemCart']);
+    Route::delete('cart/{cartId}',[CartController::class, 'deleteCart']);
 });
 
 

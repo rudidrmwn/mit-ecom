@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_details', function (Blueprint $table) {
+        Schema::create('order_status_log', function (Blueprint $table) {
             $table->id();
-            $table->string('id_order')->default(0);                
-            $table->bigInteger('id_product')->default(0);
-            $table->bigInteger('id_store')->default(0);
-            $table->integer('qty')->default(0);
-            $table->timestamps();
+            $table->string('id_order')->nullable();
+            $table->string('status')->nullable();
+            $table->timestamp('timestatus');
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_details');
+        Schema::dropIfExists('order_status_logs');
     }
 };

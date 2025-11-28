@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('order_payment', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_order');                
-            $table->bigInteger('id_address');
-            $table->bigInteger('id_payment_method');
-            $table->string('status');
-            $table->float('amount',8,2);
-            $table->string('gateway_reference');
+            $table->string('id_order')->nullable();                
+            $table->bigInteger('id_address')->nullable();
+            $table->bigInteger('id_payment_method')->nullable();
+            $table->string('status')->nullable();
+            $table->float('amount',8,2)->nullable();
+            $table->string('gateway_reference')->nullable();
             $table->timestamp('paid_time');
         });
     }

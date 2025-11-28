@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_cart');
-            $table->bigInteger('id_product');
-            $table->bigInteger('id_store');
-            $table->integer('qty');
+            $table->bigInteger('id_cart')->nullable();
+            $table->bigInteger('id_product')->nullable();
+            $table->bigInteger('id_product_attribute')->nullable();
+            $table->bigInteger('id_store')->nullable();
+            $table->string('product_name')->nullable();
+            $table->string('product_attribute_name')->nullable();
+            $table->integer('qty')->nullable();
             $table->timestamps();
         });
     }

@@ -46,6 +46,7 @@ class AuthController extends BaseController
             $user = Auth::user(); 
             $success['token'] =  $user->createToken('MIT-ECOM')-> accessToken; 
             $success['name'] =  $user->name;
+            $success['id_user'] = $user->id;
             $success['email'] = $user->email;
             $success['role'] = $user->id_role;
             $store = Store::where('id_seller', $user->id)->first();

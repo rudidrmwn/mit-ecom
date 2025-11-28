@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_user');                
-            $table->bigInteger('id_address');
-            $table->string('status');
-            $table->float('total_amount',8,2);
-            $table->float('discount_amount',8,2);
-            $table->float('tax_amount',8,2);
-            $table->float('final_amount', 8,2);
+            $table->bigInteger('id_user');   
+            $table->string('email')->nullable();             
+            $table->bigInteger('id_address')->nullable();
+            $table->string('status')->nullable();
+            $table->float('total_amount',8,2)->default(0);
+            $table->float('discount_amount',8,2)->default(0);
+            $table->float('tax_amount',8,2)->default(0);
+            $table->float('final_amount', 8,2)->default(0);
             $table->timestamps();
         });
     }
